@@ -171,7 +171,7 @@ typedef union {                            // Restricted by MISRA-C Rule 18.4 bu
     uint32_t spare28 : 1;                  // bit 28
     uint32_t spare29 : 1;                  // bit 29
     uint32_t spare30 : 1;                  // bit 30
-    uint32_t spare31 : 1;                  // bit 31
+    uint32_t hubitat_enabled : 1;          // bit 31 (v9.1.0.0)
   };
 } SysBitfield5;
 
@@ -636,8 +636,13 @@ struct {
   uint16_t      energy_power_delta[3];     // F44
   uint16_t      shutter_pwmrange[2][MAX_SHUTTERS];  // F4A
   uint8_t       dimmer_step;               // F5A
-  
-  uint8_t       free_f5b[88];              // F5B - Decrement if adding new Setting variables just above and below
+
+  uint8_t       free_f5b[25];              // F5B - Decrement if adding new Setting variables just above and below
+
+  char          hubitat_host[33];          // F74
+  uint16_t      hubitat_port;              // F95
+
+  uint8_t       free_f97[28];              // F97 - Decrement if adding new Setting variables just above and below
 
   // Only 32 bit boundary variables below
   SysBitfield5  flag5;                     // FB4

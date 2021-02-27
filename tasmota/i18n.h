@@ -647,6 +647,10 @@
 #define D_CMND_PING "Ping"
 #define D_JSON_PING "Ping"
 
+// Commands xdrv_88_hubitat.ino
+#define D_CMND_HUBITATHOST "HubitatHost"
+#define D_CMND_HUBITATPORT "HubitatPort"
+
 // Commands xsns_02_analog.ino
 #define D_CMND_ADCPARAM "AdcParam"
 
@@ -679,6 +683,7 @@
 #define D_LOG_LOG "LOG: "          // Logging
 #define D_LOG_MODULE "MOD: "       // Module
 #define D_LOG_MDNS "DNS: "         // mDNS
+#define D_LOG_HUBITAT "HUB: "      // Hubitat
 #define D_LOG_MQTT "MQT: "         // MQTT
 #define D_LOG_OTHER "OTH: "        // Other
 #define D_LOG_RESULT "RSL: "       // Result
