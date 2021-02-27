@@ -334,6 +334,9 @@ void MqttPublish(const char* topic, bool retained) {
   char slog_type[20];
   snprintf_P(slog_type, sizeof(slog_type), PSTR(D_LOG_RESULT));
 
+  // publish hook for Hubitat integration
+  HubitatPublish(TasmotaGlobal.mqtt_data);
+
   if (Settings.flag.mqtt_enabled) {  // SetOption3 - Enable MQTT
     if (MqttPublishLib(topic, retained)) {
       snprintf_P(slog_type, sizeof(slog_type), PSTR(D_LOG_MQTT));

@@ -287,6 +287,8 @@ const char HTTP_FORM_OTHER[] PROGMEM =
   "<br>"
   "<label><input id='b1' type='checkbox'%s><b>" D_MQTT_ENABLE "</b></label><br>"
   "<br>"
+  "<label><input id='h1' type='checkbox'%s><b>" D_HUBITAT_ENABLE "</b></label><br>"
+  "<br>"
   "<label><b>" D_DEVICE_NAME "</b> (%s)</label><br><input id='dn' placeholder=\"\" value=\"%s\"><br>"
   "<br>";
 
@@ -1893,6 +1895,7 @@ void HandleOtherConfiguration(void)
   strlcpy(stemp, TasmotaGlobal.mqtt_data, sizeof(stemp));  // Get JSON template
   WSContentSend_P(HTTP_FORM_OTHER, stemp, (USER_MODULE == Settings.module) ? PSTR(" checked disabled") : "",
     (Settings.flag.mqtt_enabled) ? PSTR(" checked") : "",   // SetOption3 - Enable MQTT
+    (Settings.flag5.hubitat_enabled) ? PSTR(" checked") : "",   // SetOption145 - Enable Hubitat
     SettingsText(SET_FRIENDLYNAME1), SettingsText(SET_DEVICENAME));
 
   uint32_t maxfn = (TasmotaGlobal.devices_present > MAX_FRIENDLYNAMES) ? MAX_FRIENDLYNAMES : (!TasmotaGlobal.devices_present) ? 1 : TasmotaGlobal.devices_present;
@@ -1948,6 +1951,7 @@ void OtherSaveSettings(void)
   WebGetArg(PSTR("wp"), tmp, sizeof(tmp));
   SettingsUpdateText(SET_WEBPWD, (!strlen(tmp)) ? "" : (strchr(tmp,'*')) ? SettingsText(SET_WEBPWD) : tmp);
   Settings.flag.mqtt_enabled = Webserver->hasArg(F("b1"));  // SetOption3 - Enable MQTT
+  Settings.flag5.hubitat_enabled = Webserver->hasArg(F("h1"));  // SetOption145 - Enable Hubitat
 #ifdef USE_EMULATION
   UdpDisconnect();
 #if defined(USE_EMULATION_WEMO) || defined(USE_EMULATION_HUE)
@@ -2153,6 +2157,14 @@ void HandleInformation(void)
   } else {
     WSContentSend_P(PSTR("}1" D_MQTT "}2" D_DISABLED));
   }
+  WSContentSend_P(PSTR("}1}2&nbsp;"));  // Empty line
+  if (Settings.flag5.hubitat_enabled) {  // SetOption145 - Enable Hubitat
+    WSContentSend_P(PSTR("}1" D_HUBITAT_HOST "}2%s"), Settings.hubitat_host);
+    WSContentSend_P(PSTR("}1" D_HUBITAT_PORT "}2%d"), Settings.hubitat_port);
+  } else {
+    WSContentSend_P(PSTR("}1" D_HUBITAT "}2" D_DISABLED));
+  }
+  WSContentSend_P(PSTR("}1}2&nbsp;"));  // Empty line
 
 #if defined(USE_EMULATION) || defined(USE_DISCOVERY)
   WSContentSend_P(PSTR("}1}2&nbsp;"));  // Empty line

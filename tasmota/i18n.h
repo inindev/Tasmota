@@ -684,6 +684,10 @@
 #define D_CMND_BR_RESET "Reset"
 #define D_BR_NOT_STARTED  "Berry not started"
 
+// Commands xdrv_88_hubitat.ino
+#define D_CMND_HUBITATHOST "HubitatHost"
+#define D_CMND_HUBITATPORT "HubitatPort"
+
 // Commands xsns_02_analog.ino
 #define D_CMND_ADCPARAM "AdcParam"
 
@@ -710,6 +714,7 @@
 #define D_LOG_DSB "DSB: "          // DS18xB20 sensor
 #define D_LOG_HTTP "HTP: "         // HTTP webserver
 #define D_LOG_HRE "HRE: "
+#define D_LOG_HUBITAT "HUB: "      // Hubitat
 #define D_LOG_I2C "I2C: "          // I2C
 #define D_LOG_IRR "IRR: "          // Infra Red Received
 #define D_LOG_KNX "KNX: "
