@@ -170,7 +170,7 @@ typedef union {                            // Restricted by MISRA-C Rule 18.4 bu
     uint32_t spare28 : 1;                  // bit 28
     uint32_t spare29 : 1;                  // bit 29
     uint32_t spare30 : 1;                  // bit 30
-    uint32_t spare31 : 1;                  // bit 31
+    uint32_t hubitat_enabled : 1;          // bit 31 (v9.1.0.0)
   };
 } SysBitfield5;
 
@@ -694,7 +694,10 @@ struct {
   uint16_t      shd_warmup_brightness;     // F5C
   uint8_t       shd_warmup_time;           // F5E
 
-  uint8_t       free_f5f[69];              // F5F - Decrement if adding new Setting variables just above and below
+  uint8_t       free_f5f[21];              // F5F - Decrement if adding new Setting variables just above and below
+  char          hubitat_host[34];          // F74
+  uint16_t      hubitat_port;              // F96
+  uint8_t       free_f98[12];              // F98 - Decrement if adding new Setting variables just above and below
 
   // Only 32 bit boundary variables below
 

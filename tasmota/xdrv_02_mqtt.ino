@@ -334,6 +334,9 @@ void MqttPublish(const char* topic, bool retained) {
   ShowFreeMem(PSTR("MqttPublish"));
 #endif
 
+  // publish hook for Hubitat integration
+  HubitatPublish(TasmotaGlobal.mqtt_data);
+
   if (Settings.flag4.mqtt_no_retain) {                   // SetOption104 - Disable all MQTT retained messages, some brokers don't support it: AWS IoT, Losant
     retained = false;                                    // Some brokers don't support retained, they will disconnect if received
   }

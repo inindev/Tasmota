@@ -516,6 +516,14 @@
 #define D_DEVICE_INPUT "Input"
 #define D_DEVICE_OUTPUT "Output"
 
+// xdrv_88_hubitat.ino
+#define D_CONFIGURE_HUBITAT "Configure Hubitat"
+#define D_HUBITAT "Hubitat"
+#define D_HUBITAT_HOST "Hubitat Host"
+#define D_HUBITAT_PORT "Hubitat Port"
+#define D_HUBITAT_PARAMETERS "Hubitat parameters"
+#define D_HUBITAT_ENABLE "Hubitat enable"
+
 // xsns_05_ds18b20.ino
 #define D_SENSOR_BUSY "Sensor busy"
 #define D_SENSOR_CRC_ERROR "Sensor CRC error"

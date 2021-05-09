@@ -98,8 +98,12 @@
 #define OTA_URL                "http://ota.tasmota.com/tasmota32/release/tasmota32.bin"  // [OtaUrl]
 #endif  // ESP32
 
+// -- Hubitat -------------------------------------
+#define HUBITAT_HOST           ""                // [HubitatHost]
+#define HUBITAT_PORT           39501             // [HubitatPort]
+
 // -- MQTT ----------------------------------------
-#define MQTT_USE               true              // [SetOption3] Select default MQTT use (false = Off, true = On)
+#define MQTT_USE               false             // [SetOption3] Select default MQTT use (false = Off, true = On)
 
 #define MQTT_KEEPALIVE         30                // [MqttKeepAlive]
 #define MQTT_SOCKET_TIMEOUT    4                 // [MqttTimeout]

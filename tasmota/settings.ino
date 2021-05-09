@@ -829,6 +829,10 @@ void SettingsDefaultSet2(void) {
   // Switch
   for (uint32_t i = 0; i < MAX_SWITCHES_SET; i++) { Settings.switchmode[i] = SWITCH_MODE; }
 
+  // Hubitat
+  strlcpy(Settings.hubitat_host, HUBITAT_HOST, sizeof(Settings.hubitat_host));
+  Settings.hubitat_port = HUBITAT_PORT;
+
   // MQTT
   flag.mqtt_enabled |= MQTT_USE;
   flag.mqtt_response |= MQTT_RESULT_COMMAND;
